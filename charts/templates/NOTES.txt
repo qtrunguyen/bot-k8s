@@ -1,0 +1,4 @@
+This chart deploys:
+- `redis` (Redis list on `redis:6379`)
+- `bot` Deployment (queues pod events into Redis list `job-queue`)
+- `worker` Deployment (BRPOPs `job-queue`, creates `Job` objects and a `LoadBalancer` Service)

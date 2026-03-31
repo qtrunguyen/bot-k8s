@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bot
+  namespace: {{ .Values.targetNamespace }}
+spec:
+  replicas: {{ .Values.replicaCount.bot }}
+  selector:
+    matchLabels:
+      app: bot
+  template:
+    metadata:
+      labels:
+        app: bot
+    spec:
+      serviceAccountName: {{ .Values.serviceAccount.name }}
+      containers:
+        - name: bot
+          image: "{{ .Values.images.bot.repository }}:{{ .Values.images.bot.tag }}"
+          imagePullPolicy: {{ .Values.images.bot.pullPolicy }}
+

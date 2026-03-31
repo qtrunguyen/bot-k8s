@@ -1,0 +1,7 @@
+apiVersion: v2
+name: bot-system
+description: Redis-backed bot/worker demo that creates Jobs and LoadBalancer Services
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+

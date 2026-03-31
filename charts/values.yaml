@@ -1,0 +1,28 @@
+targetNamespace: default
+
+replicaCount:
+  bot: 1
+  worker: 1
+  redis: 1
+
+images:
+  bot:
+    repository: qtrunguyen/bot
+    tag: v1
+    pullPolicy: IfNotPresent
+  worker:
+    repository: qtrunguyen/worker
+    tag: v1
+    pullPolicy: IfNotPresent
+  redis:
+    repository: redis
+    tag: "7"
+    pullPolicy: IfNotPresent
+
+serviceAccount:
+  name: bot-sa
+
+redisService:
+  name: redis
+  port: 6379
+
