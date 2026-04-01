@@ -15,6 +15,7 @@ import (
 type Event struct {
 	Namespace string
 	PodName   string
+	JobID     string // idempotency key: stable per pod (Kubernetes UID)
 }
 
 func main() {
@@ -38,6 +39,7 @@ func main() {
 			event := Event{
 				Namespace: pod.Namespace,
 				PodName:   pod.Name,
+				JobID:     string(pod.UID),
 			}
 
 			data, _ := json.Marshal(event)
