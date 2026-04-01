@@ -1,6 +1,6 @@
 # bot-k8s
 
-A small Kubernetes demo written in Go: a **bot** watches Pods and pushes events to Redis; a **worker** consumes the queue and creates Batch **Jobs** plus **LoadBalancer** Services in the cluster. It is useful for experimenting with in-cluster clients, Redis-backed work queues, and RBAC.
+A small Kubernetes demo written in Go: a **bot** watches Pods and pushes events to Redis; a **worker** consumes the queue and creates Batch **Jobs** plus **LoadBalancer** Services in the cluster.
 
 ## Architecture
 
@@ -77,9 +77,5 @@ Main knobs are in `charts/values.yaml`:
 ## Implementation notes
 
 - The bot and worker hardcode the **default** namespace for Kubernetes API calls (`Pods`, `Jobs`, `Services`). If you deploy to another namespace, update the Go code or keep workloads in `default` for the demo to behave as written.
-- LoadBalancer Services require a cluster that can provision them (e.g. cloud provider or a local implementation like MetalLB).
-- This project is intended as a **demo / learning** scratchpad, not production-hardened (minimal error handling, broad RBAC for simplicity).
-
-## License
-
-If you add a license, document it here.
+- LoadBalancer Services require a cluster that can provision them (e.g. cloud provider).
+- This project is intended as a **demo / learning** scratchpad, not production-hardened.
